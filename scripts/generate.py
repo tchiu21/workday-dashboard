@@ -7,6 +7,7 @@ Writes a JSON snapshot and prunes old data files.
 import base64
 import json
 import os
+import subprocess
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -15,7 +16,23 @@ from typing import Any, Dict, List, Optional
 import requests
 
 
+# Load .env file if present (no dependency needed)
+def load_dotenv() -> None:
+    env_path = Path(__file__).resolve().parent.parent / ".env"
+    if env_path.exists():
+        with env_path.open() as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    key, _, value = line.partition("=")
+                    os.environ.setdefault(key.strip(), value.strip())
+
+
+load_dotenv()
+
+
 # Constants
+REPO_DIR = Path(__file__).resolve().parent.parent
 JIRA_BASE_URL = "https://gusto.atlassian.net"
 GITHUB_GRAPHQL_URL = "https://api.github.com/graphql"
 SLACK_BASE_URL = "https://slack.com/api"
@@ -28,7 +45,7 @@ SLACK_CHANNELS = [
     "#retirement-compliance-lobby",
     "#retirement-apa-support",
 ]
-DATA_DIR = Path("data")
+DATA_DIR = REPO_DIR / "data"
 RETENTION_WORKDAYS = 14
 
 
@@ -675,6 +692,49 @@ def prune_old_data() -> None:
     log(f"  Deleted {deleted_count} old file(s)")
 
 
+def git_commit_and_push() -> None:
+    """Commit data changes and push to GitHub."""
+    log("Committing and pushing to GitHub...")
+
+    try:
+        today = datetime.now().strftime("%Y-%m-%d")
+
+        # Stage data files
+        subprocess.run(["git", "add", "data/"], cwd=REPO_DIR, check=True, capture_output=True)
+
+        # Check if there are changes to commit
+        result = subprocess.run(
+            ["git", "diff", "--cached", "--quiet"],
+            cwd=REPO_DIR,
+            capture_output=True,
+        )
+
+        if result.returncode == 0:
+            log("  No changes to commit")
+            return
+
+        subprocess.run(
+            ["git", "commit", "-m", f"Update dashboard {today}"],
+            cwd=REPO_DIR,
+            check=True,
+            capture_output=True,
+        )
+
+        subprocess.run(
+            ["git", "push"],
+            cwd=REPO_DIR,
+            check=True,
+            capture_output=True,
+        )
+
+        log("  Pushed to GitHub — Pages will deploy shortly")
+
+    except subprocess.CalledProcessError as e:
+        log(f"WARNING: Git operation failed: {e.stderr.decode() if e.stderr else e}")
+    except Exception as e:
+        log(f"WARNING: Failed to commit/push: {e}")
+
+
 def main() -> None:
     """Main entry point."""
     log("=== Starting work dashboard data generation ===")
@@ -704,6 +764,10 @@ def main() -> None:
     log(f"  In Progress: {len(combined_data['in_progress'])} items")
     log(f"  Up Next: {len(combined_data['up_next'])} items")
     log(f"  Slack Attention: {len(combined_data['slack_attention'])} items")
+
+    # Commit and push
+    git_commit_and_push()
+
     log("=== Complete ===")
 
 
