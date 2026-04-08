@@ -1,0 +1,38 @@
+name: Update Dashboard
+
+on:
+  schedule:
+    - cron: '50 15 * * 1-5'  # 8:50am PDT (UTC-7), weekdays only
+  workflow_dispatch:           # Manual trigger for testing
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Generate daily dashboard data
+        run: python scripts/generate.py
+        env:
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ index.html
+          git diff --cached --quiet || git commit -m "Update dashboard $(date +%Y-%m-%d)"
+          git push

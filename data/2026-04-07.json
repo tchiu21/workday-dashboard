@@ -1,0 +1,82 @@
+{
+  "date": "2026-04-07",
+  "generated_at": "2026-04-07T17:15:00-07:00",
+  "done": [
+    {
+      "source": "jira",
+      "key": "RETIRE-6745",
+      "summary": "Add nondiscrimination testing for new plan year",
+      "description": "Implemented ADP/ACP testing calculations for 2026 plan year with updated compensation limits and catch-up contribution thresholds",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-6745"
+    },
+    {
+      "source": "github",
+      "key": "PR #60695",
+      "summary": "Fix loan repayment calculation bug",
+      "description": "Corrected loan repayment schedule calculation that was incorrectly handling biweekly payroll frequencies and causing off-by-one errors in payment counts",
+      "url": "https://github.com/Gusto/guideline/pull/60695"
+    }
+  ],
+  "in_progress": [
+    {
+      "source": "jira",
+      "key": "RETIRE-6789",
+      "summary": "Fix compliance calculation edge case",
+      "description": "Working on fixing edge case in compliance calculations for mid-year plan amendments. About 80% complete - just need to add tests and handle rollover edge case",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-6789"
+    },
+    {
+      "source": "github",
+      "key": "PR #60710",
+      "summary": "Add validation for 5500 filing deadlines",
+      "description": "Draft PR for 5500 filing deadline validation. Logic is complete but needs code review and integration tests before ready to merge",
+      "url": "https://github.com/Gusto/guideline/pull/60710"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-6801",
+      "summary": "Update participant disclosure templates",
+      "description": "Reviewing and updating quarterly disclosure templates. About halfway through - completed fee disclosure updates, still need to address enrollment and distribution sections",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-6801"
+    }
+  ],
+  "up_next": [
+    {
+      "source": "jira",
+      "key": "RETIRE-6812",
+      "summary": "Implement safe harbor notice automation",
+      "description": "Next priority is automating the safe harbor notice distribution process. Need to spike on template generation approach and timeline calculation logic",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-6812"
+    },
+    {
+      "source": "github",
+      "key": "PR #60703",
+      "summary": "Review: Refactor eligibility service",
+      "description": "Code review request for eligibility service refactor. Needs thorough review as this is core logic affecting enrollment timing",
+      "url": "https://github.com/Gusto/guideline/pull/60703"
+    }
+  ],
+  "slack_attention": [
+    {
+      "channel": "#retirement-compliance",
+      "summary": "Thread about SECURE 2.0 implementation timeline",
+      "description": "Product manager asking about technical feasibility and effort estimates for implementing new SECURE 2.0 provisions. Should contribute estimates for the compliance calculation changes",
+      "age": "5h",
+      "url": "https://gusto.slack.com/archives/C03GHI789/p1744300800"
+    },
+    {
+      "channel": "#retirement-eng",
+      "summary": "Question about RuboCop failures in CI",
+      "description": "Someone asking about new RuboCop cop that's failing their build. I know the answer since I dealt with it yesterday - should respond with the fix",
+      "age": "2h",
+      "url": "https://gusto.slack.com/archives/C02DEF456/p1744311600"
+    },
+    {
+      "channel": "#retirement-platform-help",
+      "summary": "Ops team blocked on plan amendment approval",
+      "description": "Operations team asking for dev help to manually approve a stuck plan amendment in production. Might need to investigate the approval workflow logic",
+      "age": "45m",
+      "url": "https://gusto.slack.com/archives/C04JKL012/p1744318500"
+    }
+  ]
+}

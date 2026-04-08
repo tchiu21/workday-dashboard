@@ -1,0 +1,82 @@
+{
+  "date": "2026-04-08",
+  "generated_at": "2026-04-08T08:50:00-07:00",
+  "done": [
+    {
+      "source": "jira",
+      "key": "RETIRE-6789",
+      "summary": "Fix compliance calculation edge case",
+      "description": "Updated the compliance calculation to handle edge case with mid-year plan amendments where participants have both pre-amendment and post-amendment contribution limits",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-6789"
+    },
+    {
+      "source": "github",
+      "key": "PR #60710",
+      "summary": "Add validation for 5500 filing deadlines",
+      "description": "Implemented validation logic to ensure 5500 filing deadlines are calculated correctly for plans with different plan year ends, including handling of extension requests",
+      "url": "https://github.com/Gusto/guideline/pull/60710"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-6801",
+      "summary": "Update participant disclosure templates",
+      "description": "Refreshed quarterly participant disclosure templates to reflect 2026 IRS guidance changes and clarify language around automatic enrollment features",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-6801"
+    }
+  ],
+  "in_progress": [
+    {
+      "source": "jira",
+      "key": "RETIRE-6812",
+      "summary": "Implement safe harbor notice automation",
+      "description": "Building automated workflow to generate and distribute safe harbor notices 30-90 days before plan year start. Currently working on template generation logic and compliance checks",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-6812"
+    },
+    {
+      "source": "github",
+      "key": "PR #60715",
+      "summary": "Refactor contribution limit validations",
+      "description": "Large refactor to consolidate scattered contribution limit validation logic into a single service. Currently addressing test failures in the payroll integration suite",
+      "url": "https://github.com/Gusto/guideline/pull/60715"
+    }
+  ],
+  "up_next": [
+    {
+      "source": "jira",
+      "key": "RETIRE-6823",
+      "summary": "Add support for QACA safe harbor plans",
+      "description": "Need to implement support for Qualified Automatic Contribution Arrangement (QACA) safe harbor plans, including special vesting and contribution requirements",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-6823"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-6834",
+      "summary": "Fix hardship withdrawal documentation",
+      "description": "Update hardship withdrawal approval workflow to properly track and store required documentation per SECURE Act 2.0 requirements",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-6834"
+    },
+    {
+      "source": "github",
+      "key": "PR #60708",
+      "summary": "Review: Update vesting schedule calculations",
+      "description": "Code review needed for changes to vesting schedule calculation logic that handles cliff and graded vesting with break-in-service rules",
+      "url": "https://github.com/Gusto/guideline/pull/60708"
+    }
+  ],
+  "slack_attention": [
+    {
+      "channel": "#retirement-compliance-filings-help",
+      "summary": "Unanswered @devs mention about 5500 extensions",
+      "description": "Plan sponsor coordinator asking about how to handle a client who needs to file a 5500 extension but missed the original deadline. Need to clarify the technical process and any manual workarounds",
+      "age": "3h",
+      "url": "https://gusto.slack.com/archives/C01ABC123/p1744387200"
+    },
+    {
+      "channel": "#retirement-eng",
+      "summary": "Question about contribution limit test failures",
+      "description": "Another engineer seeing intermittent test failures in contribution_limit_spec.rb and asking if it's related to recent changes. Should respond since I touched this area yesterday",
+      "age": "1h",
+      "url": "https://gusto.slack.com/archives/C02DEF456/p1744394800"
+    }
+  ]
+}
