@@ -122,6 +122,10 @@ main {
     color: #e91e63;
 }
 
+.slack-work-label {
+    color: #9c27b0;
+}
+
 .pill-container {
     display: flex;
     flex-wrap: wrap;
@@ -195,6 +199,17 @@ main {
 .pill.slack:hover {
     background-color: rgba(233, 30, 99, 0.25);
     border-color: rgba(233, 30, 99, 0.5);
+}
+
+.pill.slack-work {
+    background-color: rgba(156, 39, 176, 0.15);
+    border-color: rgba(156, 39, 176, 0.3);
+    color: #9c27b0;
+}
+
+.pill.slack-work:hover {
+    background-color: rgba(156, 39, 176, 0.25);
+    border-color: rgba(156, 39, 176, 0.5);
 }
 
 .pill .tooltip {

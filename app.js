@@ -13,6 +13,7 @@ const doneItemsEl = document.getElementById('doneItems');
 const inProgressItemsEl = document.getElementById('inProgressItems');
 const upNextItemsEl = document.getElementById('upNextItems');
 const slackItemsEl = document.getElementById('slackItems');
+const slackWorkItemsEl = document.getElementById('slackWorkItems');
 
 // Utility functions
 function formatDate(date) {
@@ -84,9 +85,13 @@ function createPill(item, type) {
         // Jira or GitHub item
         displayText = `${item.key}: ${item.summary}`;
     } else if (item.channel) {
-        // Slack item
+        // Slack attention item
         const ageText = item.age ? ` (${item.age})` : '';
         displayText = `${item.channel}: ${item.summary}${ageText}`;
+    } else if (item.context) {
+        // Slack work-mining item
+        const ageText = item.age ? ` (${item.age})` : '';
+        displayText = `${item.context}: ${item.summary}${ageText}`;
     } else {
         displayText = item.summary;
     }
@@ -122,6 +127,7 @@ function renderDashboard(data) {
     renderSection(inProgressItemsEl, data.in_progress, 'in-progress');
     renderSection(upNextItemsEl, data.up_next, 'up-next');
     renderSection(slackItemsEl, data.slack_attention, 'slack');
+    renderSection(slackWorkItemsEl, data.slack_work, 'slack-work');
 
     if (data.generated_at) {
         lastUpdatedEl.textContent = `Last updated: ${formatTimestamp(data.generated_at)}`;
