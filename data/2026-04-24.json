@@ -5,6 +5,23 @@
     "slack-attention: only #retirement-compliance-lobby was findable via channel search; 3 of 4 compliance channels not scanned",
     "slack-work-mining: ages >24h reflect Apr 24 timestamps vs Apr 23 window start"
   ],
+  "standup_digest": {
+    "yesterday": [
+      "Form 5498 readiness: Lob return address + cover letter entity rename, field-to-system mapping audit (RETIRE-7505, PR #61622)",
+      "8955 fixes: healthcheck false positives (RETIRE-7120, PR #61546), stale PYE date bug + 3 stuck amendments resolved and FIRE-confirmed (RETIRE-7305)",
+      "Other shipped: deconversion audit_type sync (RETIRE-7558, PR #61448), zero-refund liquidation handling (PR #61526), compliance fixture perf (RETIRE-7710, PR #61630), dormant flag removal (RETIRE-7604)"
+    ],
+    "today": [
+      "Form 5498 Box 4 recharacterized contributions before PY 2025 filings (RETIRE-7860)",
+      "AAA eoy_mv investigation for dc_plan 165716 — confirmed DE includes reversal__deposits, digging into why EOY not reflecting",
+      "Post-submission process definition for conversion ops (RETIRE-6389)"
+    ],
+    "blockers": [
+      "2 unanswered @retirement-compliance-devs pings in #retirement-compliance-lobby (Kacey re SE ticket queue, Alexandra re LRG ADP/ACP CRR case)",
+      "BTC SFTP inbound pipeline — waiting on BTC team to confirm push-side trigger",
+      "13 PRs awaiting review (mostly stale — worth a triage pass)"
+    ]
+  },
   "done": [
     {
       "source": "jira",
