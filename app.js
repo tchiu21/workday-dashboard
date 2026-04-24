@@ -131,8 +131,14 @@ function renderDashboard(data) {
     renderSection(slackWorkItemsEl, data.slack_work, 'slack-work');
 
     if (Array.isArray(data.warnings) && data.warnings.length > 0) {
-        const items = data.warnings.map(w => `<li>${w}</li>`).join('');
-        warningsBannerEl.innerHTML = `<ul>${items}</ul>`;
+        const ul = document.createElement('ul');
+        data.warnings.forEach(w => {
+            const li = document.createElement('li');
+            li.textContent = w;
+            ul.appendChild(li);
+        });
+        warningsBannerEl.innerHTML = '';
+        warningsBannerEl.appendChild(ul);
         warningsBannerEl.style.display = 'block';
     } else {
         warningsBannerEl.style.display = 'none';
@@ -178,6 +184,7 @@ async function loadDashboard(date) {
     loadingEl.style.display = 'block';
     errorEl.style.display = 'none';
     dashboardEl.style.display = 'none';
+    warningsBannerEl.style.display = 'none';
 
     try {
         const result = await fetchData(date);
