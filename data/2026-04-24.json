@@ -1,0 +1,275 @@
+{
+  "date": "2026-04-24",
+  "generated_at": "2026-04-24T14:05:40-07:00",
+  "warnings": [
+    "slack-attention: only #retirement-compliance-lobby was findable via channel search; 3 of 4 compliance channels not scanned",
+    "slack-work-mining: ages >24h reflect Apr 24 timestamps vs Apr 23 window start"
+  ],
+  "done": [
+    {
+      "source": "jira",
+      "key": "RETIRE-7505",
+      "summary": "Spike: check for necessary updates to 5498",
+      "description": "pre-filing check for form 5498, make sure we are ready to trigger filings. Requirements: Cover Letter update in Lob (CS-47206) Address update in Lob to: Guideline RK, LLC 1201 16th Street, Suite",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-7505"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-7710",
+      "summary": "Optimize setup cost of started_large and annual_review_ready fixtures",
+      "description": "Problem use_cases/401k/started_large and use_cases/filings/annual_review_ready dominate fixture build cost for tests that only need one participant-populated plan. Measured locally: started_large ~80s",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-7710"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-7305",
+      "summary": "Fix Form 8955 Amendment Stale PYE Date",
+      "description": "Summary Fix a bug where Form 8955 amendments use a stale Plan Year End (PYE) date because the amendment flow reuses the original filing's preflight instead of resolving the latest one. Three plans wit",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-7305"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-7558",
+      "summary": "Auto-sync existing audit.audit_type when preflight transitions to deconverted mid-year",
+      "description": "Motivation Filing preflight 222746 (tenant ACC) surfaced a gap in how we keep audit records in sync with plan deconversion state. When Operations tried to enter auditor firm information via \"Edit audi",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-7558"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-7120",
+      "summary": "Investigate Form 8955 participant reporting population mismatch (1,319 failures, PY 2025)",
+      "description": "Context: The Health::Form8955#test_participant_reporting_population_mismatch healthcheck is reporting 1,319 mismatches for plan year 2025. The alert fired on 2026-04-14 in #retirement-alerts. This hea",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-7120"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-7604",
+      "summary": "Remove dormant enable-compliance-engine-new-year feature flag",
+      "description": "Context enable-compliance-engine-new-year is a per-DcPlan feature flag created in March 2021 (APP-13212, PR #12391) to gate running the compliance engine for the current year before April 1st — normal",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-7604"
+    },
+    {
+      "source": "github",
+      "key": "PR #61630",
+      "summary": "[RETIRE-7710] Optimize started_large fixture setup",
+      "description": "[RETIRE-7710] Optimize started_large fixture setup — Simplify test/support/fixtures/use_cases/401k/started_large.rb: replace ~130 lines of copy-pasted scaffolding with UseCaseFixtureHelper.creat",
+      "url": "https://github.com/guideline-app/app/pull/61630"
+    },
+    {
+      "source": "github",
+      "key": "PR #61622",
+      "summary": "[RETIRE-7505] Form 5498 Lob Updates",
+      "description": "[RETIRE-7505] Form 5498 Lob Updates — Update Lob return address IDs for test and production environments; update cover letter. Previous return address IDs are outdated/invalid; cover letter updated.",
+      "url": "https://github.com/guideline-app/app/pull/61622"
+    },
+    {
+      "source": "github",
+      "key": "PR #61546",
+      "summary": "[RETIRE-7120] Fix Form 8955 healthcheck false positives",
+      "description": "[RETIRE-7120] Fix Form 8955 healthcheck false positives — Updates Health::Form8955#test_participant_reporting_population_mismatch so it only flags gaps the generation op would actually create a repo",
+      "url": "https://github.com/guideline-app/app/pull/61546"
+    },
+    {
+      "source": "github",
+      "key": "PR #61526",
+      "summary": "[RETIRE-7499] Skip zero-refund participants with own liquidation",
+      "description": "[RETIRE-7499] Skip zero-refund participants with own liquidation — Skip zero-refund participants (including their own liquidations) in controlled-group apportion, and emit is_liquidation + liquidatio",
+      "url": "https://github.com/guideline-app/app/pull/61526"
+    },
+    {
+      "source": "github",
+      "key": "PR #61448",
+      "summary": "[RETIRE-7558] Sync existing audit.audit_type to non_gdl_audit_midyear_deconverted on deconversion",
+      "description": "[RETIRE-7558] Sync existing audit.audit_type to non_gdl_audit_midyear_deconverted on deconversion — Extends FilingPreflightUpsertOp#maybe_enqueue_audit_upsert to also enqueue an AuditUpsertOp call",
+      "url": "https://github.com/guideline-app/app/pull/61448"
+    }
+  ],
+  "in_progress": [
+    {
+      "source": "jira",
+      "key": "RETIRE-7860",
+      "summary": "Populate Form 5498 Box 4 before plan year 2025 filings",
+      "description": "Problem Form 5498 Box 4 (recharacterized contributions) is hardcoded to 0 at contributions.rb:35-37. Plan year 2025 recharacterizations exist in production (66 events / ~$126K per BQ) and the plan yea",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-7860"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-6389",
+      "summary": "Determine post submission process for conversion ops",
+      "description": "Problem After sponsors submit prior provider reports (RETIRE-6198), conversion ops needs a defined process to get compensation, contributions, and distribution data into the correct places on particip",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-6389"
+    }
+  ],
+  "up_next": [
+    {
+      "source": "jira",
+      "key": "RETIRE-7903",
+      "summary": "Add Schedule C direct compensation breakdown for Ops Auditor Inquiry",
+      "description": "Problem Ops has no self-serve way to see the line items that sum to Schedule C \"direct compensation to Guideline LLC\" on a Form 5500 filing. When an auditor questions a Schedule C amount (or the amoun",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-7903"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-7116",
+      "summary": "ACC plans with manual/self-service payroll stuck in pending for Form 5500 filings due to missing plan_administrator subscription",
+      "description": "Summary 223 ACC tenant plans with pending plan year 2025 Form 5500 filings are stuck in pending state and cannot transition to confirmed. The root cause is that these plans have plan_administrator = \"",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-7116"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-4551",
+      "summary": "Investigate and optimize filing preflight validation performance (P95: ~8.9 hours)",
+      "description": "Problem Filing preflight validations are taking ~8 hours (P95: 31.9M ms / ~8.9h, AVG: 22.8M ms / ~6.3h) to run across all plans daily. The Honeycomb dashboard \"Filing Preflight Validations\" shows a da",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-4551"
+    },
+    {
+      "source": "github",
+      "key": "PR #61705",
+      "summary": "[RETIRE-7917] Add RegenerateQuarterlyStatementsTask DevTask",
+      "description": "[RETIRE-7917] Add RegenerateQuarterlyStatementsTask DevTask — review requested on tchiu21",
+      "url": "https://github.com/guideline-app/app/pull/61705"
+    },
+    {
+      "source": "github",
+      "key": "PR #61653",
+      "summary": "[RETIRE-6249] Add dev tasks to enable/disable TrafficControl flags",
+      "description": "[RETIRE-6249] Add dev tasks to enable/disable TrafficControl flags — review requested on tchiu21",
+      "url": "https://github.com/guideline-app/app/pull/61653"
+    },
+    {
+      "source": "github",
+      "key": "PR #61621",
+      "summary": "feat(client/packages/guideline-ui): add subpath exports for charts, workflow, and forms [RETIRE-7763]",
+      "description": "feat(guideline-ui): add subpath exports for charts, workflow, and forms [RETIRE-7763] — Add ./charts, ./workflow, and ./forms subpath exports to @guideline-app/guideline-ui to reduce dependency burd",
+      "url": "https://github.com/guideline-app/app/pull/61621"
+    },
+    {
+      "source": "github",
+      "key": "PR #61522",
+      "summary": "[RETIRE-7648] Auto-generate TypeScript scope path types from permissions schema",
+      "description": "[RETIRE-7648] Auto-generate TypeScript scope path types from permissions schema — review requested on tchiu21",
+      "url": "https://github.com/guideline-app/app/pull/61522"
+    },
+    {
+      "source": "github",
+      "key": "PR #61370",
+      "summary": "[RETIRE-2237] Autogenerate Form 8955 filings + 4-week pending window",
+      "description": "[RETIRE-2237] Autogenerate Form 8955 filings + 4-week pending window — Auto-generate Form 8955 filings in pending state, keep them pending for a 4-week review window, then auto-confirm via a schedul",
+      "url": "https://github.com/guideline-app/app/pull/61370"
+    },
+    {
+      "source": "github",
+      "key": "PR #61035",
+      "summary": "[RETIRE-7123] Gate entity name rebrand behind feature flag",
+      "description": "[RETIRE-7123] Gate entity name rebrand behind feature flag — Gate Guideline → Gusto legal entity name rebrand behind compliance--gusto-entity-name-rebrand feature flag; entity names must switch on A",
+      "url": "https://github.com/guideline-app/app/pull/61035"
+    },
+    {
+      "source": "github",
+      "key": "PR #60399",
+      "summary": "[RETIRE-3203] default dc_plans trading_version to v2 and remove v1-to-v2 migration",
+      "description": "[RETIRE-3203] default dc_plans trading_version to v2 and remove v1-to-v2 migration — review requested on tchiu21",
+      "url": "https://github.com/guideline-app/app/pull/60399"
+    },
+    {
+      "source": "github",
+      "key": "PR #60334",
+      "summary": "Add caching optimizations for batch portfolio replay simulations",
+      "description": "Add caching optimizations for batch portfolio replay simulations — review requested on tchiu21",
+      "url": "https://github.com/guideline-app/app/pull/60334"
+    },
+    {
+      "source": "github",
+      "key": "PR #60241",
+      "summary": "[RETIRE-4020] Portfolio replay batch result document",
+      "description": "[RETIRE-4020] Portfolio replay batch result document — review requested on tchiu21",
+      "url": "https://github.com/guideline-app/app/pull/60241"
+    },
+    {
+      "source": "github",
+      "key": "PR #58778",
+      "summary": "Move AI-generated dev task documentation to proper locations",
+      "description": "Move AI-generated dev task documentation to proper locations — Moved 18 AI-generated dev task documentation files from docs/dev_tasks/ to their proper locations alongside the corresponding task.rb fi",
+      "url": "https://github.com/guideline-app/app/pull/58778"
+    },
+    {
+      "source": "github",
+      "key": "PR #58547",
+      "summary": "Add README documenting all shared React hooks across the monorepo",
+      "description": "Add README documenting all shared React hooks across the monorepo — review requested on tchiu21",
+      "url": "https://github.com/guideline-app/app/pull/58547"
+    },
+    {
+      "source": "github",
+      "key": "PR #58539",
+      "summary": "chore: start part 13 of class component refactor RETIRE-2920",
+      "description": "chore: start part 13 of class component refactor RETIRE-2920 — review requested on tchiu21",
+      "url": "https://github.com/guideline-app/app/pull/58539"
+    },
+    {
+      "source": "github",
+      "key": "PR #58476",
+      "summary": "refactor(advisor, ira): convert advisor + IRA app components to functional (RETIRE-2920 PR 0d)",
+      "description": "refactor(advisor, ira): convert advisor + IRA app components to functional (RETIRE-2920 PR 0d) — Convert advisor and IRA app class components to functional (PR 0d — high-risk extraction). 179 files co",
+      "url": "https://github.com/guideline-app/app/pull/58476"
+    }
+  ],
+  "slack_attention": [
+    {
+      "channel": "#retirement-compliance-lobby",
+      "summary": "Unanswered @retirement-compliance-devs ping from Kacey Roberts",
+      "description": "@retirement-compliance-devs SE has no new tickets to review today, if you do not have anything we can give that time back.",
+      "age": "14h",
+      "url": "https://gusto.slack.com/archives/C09U30SCMB3"
+    },
+    {
+      "channel": "#retirement-compliance-lobby",
+      "summary": "Unanswered @retirement-compliance-devs ping from Alexandra Munteanu",
+      "description": "@retirement-compliance-devs Hi! We had a few CRR cases created yesterday where ADP and ACP compliance refunds were identified to be owed for 2025 a plan that actually passed the ADP and ACP tests, however, it is part of an LRG where the primary plan did fail the ADP and ACP tests",
+      "age": "0h",
+      "url": "https://gusto.slack.com/archives/C09U30SCMB3"
+    }
+  ],
+  "slack_work": [
+    {
+      "source": "slack",
+      "context": "DM with Annie Cutting, Alexandra Munteanu",
+      "summary": "Notified stakeholders that SF sync for proposal units will now include liquidation_date parameters to distinguish liquidation events.",
+      "description": "Tommy proactively informed Annie Cutting and Alex Munteanu that the DcPlanComplianceProposalUnit SF sync (originally set up by Jeff) is being extended to pass liquidation_date parameters so ops can tell whether an insufficient-balance unit is due to a liquidation event.",
+      "url": "https://gusto.enterprise.slack.com/archives/C0AVA1JK6G1/p1776970212958549",
+      "age": "12h"
+    },
+    {
+      "source": "slack",
+      "context": "DM with Mads Moeller",
+      "summary": "Investigating why AAA eoy_mv (cash asset) does not reflect reversal__deposit records for dc_plan 165716 despite adjustments being generated.",
+      "description": "Tommy reached out to Mads Moeller (Data Eng) to verify whether reversal__deposit records (CASH asset type) are summed into eoy_mv in AAA calculations. ReconOps had reported end-of-year values not updating, and Tommy confirmed the AAA record was generated from the adjustment but the EOY figure wasn't changing.",
+      "url": "https://gusto.enterprise.slack.com/archives/D0A7ASS114M/p1776984054983169",
+      "age": "16h"
+    },
+    {
+      "source": "slack",
+      "context": "#retirement-compliance-filings-help thread",
+      "summary": "Resolved stuck 8955 amendments for 3 plans: prepared corrected amendment preflights, submitted them, and confirmed FIRE processed them as GOOD.",
+      "description": "Tommy diagnosed that 8955 amendments were pulling PYE dates from the base filing preflight instead of the amendment preflight, fixed the logic, prepared new amendments for dc_plans 34890/46666/48709 with corrected preflights, submitted them, and confirmed with Liam that FIRE returned GOOD status — all 3 are now fulfilled.",
+      "url": "https://gustohq.slack.com/archives/C09UNU84V6D/p1777049980654249?thread_ts=1776972913.966529&cid=C09UNU84V6D",
+      "age": "34h"
+    },
+    {
+      "source": "slack",
+      "context": "DM with Jonathon Meyer",
+      "summary": "Continuing investigation into AAA eoy_mv not updating for dc_plan 165716 — confirmed DE includes reversal__deposits, now digging further.",
+      "description": "After verifying with Mads that reversal__deposit field key is rolled into AAA calculations, Tommy updated Jonathon Meyer that the issue is not on the Data Eng side and that he is continuing to investigate why the EOY values aren't reflecting in the filing for that specific plan.",
+      "url": "https://gusto.enterprise.slack.com/archives/D0AG5B4TKM3/p1777050424722009",
+      "age": "34h"
+    },
+    {
+      "source": "slack",
+      "context": "DM with Marouane Fattoumy",
+      "summary": "Investigating stalled BTC SFTP inbound file pipeline — confirmed automation is working on our side, querying whether BTC needs to push from their end.",
+      "description": "Tommy messaged Marouane Fattoumy asking whether BTC needs to trigger a push on their side, noting the automation pipeline appears healthy on Guideline's end and that any received files would appear in the btc_inbound files table.",
+      "url": "https://gusto.enterprise.slack.com/archives/D0AV2BGHJBY/p1777062630931749",
+      "age": "38h"
+    }
+  ]
+}
