@@ -31,7 +31,7 @@ We want to replace the Python script with a Claude-native flow that uses existin
 ### File layout
 
 ```
-~/.claude/skills/refresh-dashboard/
+~/.claude/skills/refresh-workday-dashboard/
 ├── SKILL.md                    # orchestrator
 ├── jira.md                     # RETIRE project queries via jiraconfluencegusto MCP
 ├── github.md                   # PR queries via Github-Gusto MCP

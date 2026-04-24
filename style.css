@@ -128,23 +128,23 @@ main {
 }
 
 .done-label {
-    color: #4caf50;
+    color: #81c784;
 }
 
 .in-progress-label {
-    color: #2196f3;
+    color: #64b5f6;
 }
 
 .up-next-label {
-    color: #ff9800;
+    color: #ffb74d;
 }
 
 .slack-label {
-    color: #e91e63;
+    color: #f06292;
 }
 
 .slack-work-label {
-    color: #9c27b0;
+    color: #ce93d8;
 }
 
 .digest-label {
@@ -235,58 +235,58 @@ main {
 }
 
 .pill.done {
-    background-color: rgba(76, 175, 80, 0.15);
-    border-color: rgba(76, 175, 80, 0.3);
-    color: #4caf50;
+    background-color: rgba(129, 199, 132, 0.15);
+    border-color: rgba(129, 199, 132, 0.35);
+    color: #a5d6a7;
 }
 
 .pill.done:hover {
-    background-color: rgba(76, 175, 80, 0.25);
-    border-color: rgba(76, 175, 80, 0.5);
+    background-color: rgba(129, 199, 132, 0.25);
+    border-color: rgba(129, 199, 132, 0.55);
 }
 
 .pill.in-progress {
-    background-color: rgba(33, 150, 243, 0.15);
-    border-color: rgba(33, 150, 243, 0.3);
-    color: #2196f3;
+    background-color: rgba(100, 181, 246, 0.15);
+    border-color: rgba(100, 181, 246, 0.35);
+    color: #90caf9;
 }
 
 .pill.in-progress:hover {
-    background-color: rgba(33, 150, 243, 0.25);
-    border-color: rgba(33, 150, 243, 0.5);
+    background-color: rgba(100, 181, 246, 0.25);
+    border-color: rgba(100, 181, 246, 0.55);
 }
 
 .pill.up-next {
-    background-color: rgba(255, 152, 0, 0.15);
-    border-color: rgba(255, 152, 0, 0.3);
-    color: #ff9800;
+    background-color: rgba(255, 183, 77, 0.15);
+    border-color: rgba(255, 183, 77, 0.35);
+    color: #ffcc80;
 }
 
 .pill.up-next:hover {
-    background-color: rgba(255, 152, 0, 0.25);
-    border-color: rgba(255, 152, 0, 0.5);
+    background-color: rgba(255, 183, 77, 0.25);
+    border-color: rgba(255, 183, 77, 0.55);
 }
 
 .pill.slack {
-    background-color: rgba(233, 30, 99, 0.15);
-    border-color: rgba(233, 30, 99, 0.3);
-    color: #e91e63;
+    background-color: rgba(240, 98, 146, 0.15);
+    border-color: rgba(240, 98, 146, 0.35);
+    color: #f48fb1;
 }
 
 .pill.slack:hover {
-    background-color: rgba(233, 30, 99, 0.25);
-    border-color: rgba(233, 30, 99, 0.5);
+    background-color: rgba(240, 98, 146, 0.25);
+    border-color: rgba(240, 98, 146, 0.55);
 }
 
 .pill.slack-work {
-    background-color: rgba(156, 39, 176, 0.15);
-    border-color: rgba(156, 39, 176, 0.3);
-    color: #9c27b0;
+    background-color: rgba(206, 147, 216, 0.15);
+    border-color: rgba(206, 147, 216, 0.35);
+    color: #e1bee7;
 }
 
 .pill.slack-work:hover {
-    background-color: rgba(156, 39, 176, 0.25);
-    border-color: rgba(156, 39, 176, 0.5);
+    background-color: rgba(206, 147, 216, 0.25);
+    border-color: rgba(206, 147, 216, 0.55);
 }
 
 .pill .tooltip {
