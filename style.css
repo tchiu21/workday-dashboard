@@ -85,6 +85,27 @@ main {
     color: #f85149;
 }
 
+.warnings-banner {
+    max-width: 900px;
+    margin: 0 auto 20px;
+    padding: 12px 16px;
+    background-color: rgba(255, 152, 0, 0.1);
+    border: 1px solid rgba(255, 152, 0, 0.3);
+    border-radius: 6px;
+    color: #ff9800;
+    font-size: 0.875rem;
+}
+
+.warnings-banner ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.warnings-banner li::before {
+    content: '⚠ ';
+}
+
 .dashboard {
     display: flex;
     flex-direction: column;

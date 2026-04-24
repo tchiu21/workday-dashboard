@@ -14,6 +14,7 @@ const inProgressItemsEl = document.getElementById('inProgressItems');
 const upNextItemsEl = document.getElementById('upNextItems');
 const slackItemsEl = document.getElementById('slackItems');
 const slackWorkItemsEl = document.getElementById('slackWorkItems');
+const warningsBannerEl = document.getElementById('warningsBanner');
 
 // Utility functions
 function formatDate(date) {
@@ -128,6 +129,14 @@ function renderDashboard(data) {
     renderSection(upNextItemsEl, data.up_next, 'up-next');
     renderSection(slackItemsEl, data.slack_attention, 'slack');
     renderSection(slackWorkItemsEl, data.slack_work, 'slack-work');
+
+    if (Array.isArray(data.warnings) && data.warnings.length > 0) {
+        const items = data.warnings.map(w => `<li>${w}</li>`).join('');
+        warningsBannerEl.innerHTML = `<ul>${items}</ul>`;
+        warningsBannerEl.style.display = 'block';
+    } else {
+        warningsBannerEl.style.display = 'none';
+    }
 
     if (data.generated_at) {
         lastUpdatedEl.textContent = `Last updated: ${formatTimestamp(data.generated_at)}`;
