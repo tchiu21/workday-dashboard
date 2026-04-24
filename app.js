@@ -84,7 +84,9 @@ function createPill(item, type) {
     let displayText;
     if (item.key) {
         // Jira or GitHub item
-        displayText = `${item.key}: ${item.summary}`;
+        const isCodeReview = item.source === 'github' && type === 'up-next';
+        const prefix = isCodeReview ? '[review] ' : '';
+        displayText = `${prefix}${item.key}: ${item.summary}`;
     } else if (item.channel) {
         // Slack attention item
         const ageText = item.age ? ` (${item.age})` : '';
