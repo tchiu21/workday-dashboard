@@ -64,7 +64,7 @@ The skill's `description:` frontmatter triggers on phrases like "refresh dashboa
 5. **Merge** results. Jira + GitHub items concatenate into `done` / `in_progress` / `up_next`. Slack lists remain separate.
 6. **Dedupe `slack_work`** against the merged Jira + GitHub results: drop any `slack_work` item whose summary clearly refers to a Jira key or PR number already listed.
 7. **Write** `data/YYYY-MM-DD.json`, using today's calendar date.
-8. **Prune** JSON files in `data/` older than 14 workdays.
+8. **Prune** JSON files in `data/` from earlier calendar months (keep current month only).
 9. **Commit + push.** `git add data/` → commit `Update dashboard YYYY-MM-DD` → push. No-op if nothing changed. Report result to the user.
 
 If any single sub-agent fails, record a string in `warnings[]` in the output JSON (e.g. `"github: MCP not responding"`) and continue. Partial dashboard beats no dashboard.

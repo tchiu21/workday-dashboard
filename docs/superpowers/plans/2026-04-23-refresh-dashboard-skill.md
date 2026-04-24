@@ -992,11 +992,13 @@ Find:
 Replace with:
 
 ````markdown
-### Step 8: Prune data/ files older than 14 workdays
+### Step 8: Prune data/ files from earlier calendar months
 
-Compute `cutoff_date` = 14 workdays before today (iterate backwards skipping weekends).
+Retention policy: keep only files from the current calendar month. When the month rolls over, the previous month's files are flushed on the next skill run.
 
-List files in `{{REPO_PATH}}/data/` matching `YYYY-MM-DD.json`. For each, parse the date from the filename. If the parsed date < cutoff_date, delete the file:
+Compute `current_month_start` = first day of the current calendar month (e.g. `2026-05-01` for any run in May 2026).
+
+List files in `{{REPO_PATH}}/data/` matching `YYYY-MM-DD.json`. For each, parse the date from the filename. If the parsed date < `current_month_start`, delete the file:
 
 ```bash
 rm "{{REPO_PATH}}/data/{{old_file}}"
