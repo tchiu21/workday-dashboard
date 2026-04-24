@@ -1,3 +1,39 @@
+// Passphrase gate — casual protection only. Anyone with DevTools can bypass.
+// Hash is SHA-256 of the expected passphrase; compared in-browser.
+const PASSPHRASE_HASH = 'b8e8eaae77c8842b95b22d3739d87c876f95d993271e3f85d975a657a3f58c63';
+const UNLOCK_KEY = 'workday-dashboard-unlocked';
+
+async function sha256Hex(text) {
+    const buf = new TextEncoder().encode(text);
+    const digest = await crypto.subtle.digest('SHA-256', buf);
+    return [...new Uint8Array(digest)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function showApp() {
+    document.getElementById('lockScreen').style.display = 'none';
+    document.getElementById('appContainer').hidden = false;
+    loadDashboard(currentDate);
+}
+
+async function handleUnlock(event) {
+    event.preventDefault();
+    const input = document.getElementById('lockInput');
+    const errorEl = document.getElementById('lockError');
+    errorEl.textContent = '';
+    try {
+        const hash = await sha256Hex(input.value);
+        if (hash === PASSPHRASE_HASH) {
+            sessionStorage.setItem(UNLOCK_KEY, '1');
+            showApp();
+        } else {
+            errorEl.textContent = 'Incorrect passphrase.';
+            input.select();
+        }
+    } catch (err) {
+        errorEl.textContent = 'Unable to verify. ' + err.message;
+    }
+}
+
 // State
 let currentDate = new Date();
 
@@ -281,7 +317,10 @@ nextDayBtn.addEventListener('click', () => {
     }
 });
 
-// Initialize on page load
+// Initialize on page load — gated by the passphrase.
 window.addEventListener('DOMContentLoaded', () => {
-    loadDashboard(currentDate);
+    document.getElementById('lockForm').addEventListener('submit', handleUnlock);
+    if (sessionStorage.getItem(UNLOCK_KEY) === '1') {
+        showApp();
+    }
 });
