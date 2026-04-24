@@ -1,0 +1,34 @@
+{
+  "date": "2026-04-23",
+  "generated_at": "2026-04-23T09:00:00-07:00",
+  "done": [
+    {
+      "source": "jira",
+      "key": "RETIRE-6789",
+      "summary": "Fixture: done Jira item",
+      "description": "Verifying the done pill still renders.",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-6789"
+    }
+  ],
+  "in_progress": [],
+  "up_next": [],
+  "slack_attention": [
+    {
+      "channel": "#retirement-compliance",
+      "summary": "Fixture: attention item",
+      "description": "Verifying the slack attention pill still renders.",
+      "age": "2h",
+      "url": "https://gusto.slack.com/archives/CXXX/pYYY"
+    }
+  ],
+  "slack_work": [
+    {
+      "source": "slack",
+      "context": "DM with Jane Doe",
+      "summary": "Fixture: uncaptured work item",
+      "description": "Verifying the slack_work pill renders with context and age.",
+      "age": "3h",
+      "url": "https://gusto.slack.com/archives/DXXX/pZZZ"
+    }
+  ]
+}

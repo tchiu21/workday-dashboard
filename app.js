@@ -13,6 +13,15 @@ const doneItemsEl = document.getElementById('doneItems');
 const inProgressItemsEl = document.getElementById('inProgressItems');
 const upNextItemsEl = document.getElementById('upNextItems');
 const slackItemsEl = document.getElementById('slackItems');
+const slackWorkItemsEl = document.getElementById('slackWorkItems');
+const warningsBannerEl = document.getElementById('warningsBanner');
+const standupDigestEl = document.getElementById('standupDigest');
+const digestYesterdayEl = document.getElementById('digestYesterday');
+const digestTodayEl = document.getElementById('digestToday');
+const digestBlockersEl = document.getElementById('digestBlockers');
+
+// Max pills to show per section before collapsing into "... +N more"
+const MAX_PILLS_PER_SECTION = 10;
 
 // Utility functions
 function formatDate(date) {
@@ -82,11 +91,17 @@ function createPill(item, type) {
     let displayText;
     if (item.key) {
         // Jira or GitHub item
-        displayText = `${item.key}: ${item.summary}`;
+        const isCodeReview = item.source === 'github' && type === 'up-next';
+        const prefix = isCodeReview ? '[review] ' : '';
+        displayText = `${prefix}${item.key}: ${item.summary}`;
     } else if (item.channel) {
-        // Slack item
+        // Slack attention item
         const ageText = item.age ? ` (${item.age})` : '';
         displayText = `${item.channel}: ${item.summary}${ageText}`;
+    } else if (item.context) {
+        // Slack work-mining item
+        const ageText = item.age ? ` (${item.age})` : '';
+        displayText = `${item.context}: ${item.summary}${ageText}`;
     } else {
         displayText = item.summary;
     }
@@ -111,17 +126,71 @@ function renderSection(container, items, type) {
         return; // Empty state handled by CSS
     }
 
-    items.forEach(item => {
+    const visible = items.slice(0, MAX_PILLS_PER_SECTION);
+    const hiddenCount = items.length - visible.length;
+
+    visible.forEach(item => {
         const pill = createPill(item, type);
         container.appendChild(pill);
     });
+
+    if (hiddenCount > 0) {
+        const more = document.createElement('span');
+        more.className = 'more-indicator';
+        more.textContent = `… and ${hiddenCount} more`;
+        container.appendChild(more);
+    }
+}
+
+function renderDigest(digest) {
+    if (!digest || typeof digest !== 'object') {
+        standupDigestEl.style.display = 'none';
+        return;
+    }
+
+    const sections = [
+        [digestYesterdayEl, digest.yesterday],
+        [digestTodayEl, digest.today],
+        [digestBlockersEl, digest.blockers],
+    ];
+
+    let anyContent = false;
+    sections.forEach(([ul, items]) => {
+        ul.innerHTML = '';
+        if (Array.isArray(items) && items.length > 0) {
+            anyContent = true;
+            items.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                ul.appendChild(li);
+            });
+        }
+    });
+
+    standupDigestEl.style.display = anyContent ? 'block' : 'none';
 }
 
 function renderDashboard(data) {
+    renderDigest(data.standup_digest);
     renderSection(doneItemsEl, data.done, 'done');
     renderSection(inProgressItemsEl, data.in_progress, 'in-progress');
     renderSection(upNextItemsEl, data.up_next, 'up-next');
     renderSection(slackItemsEl, data.slack_attention, 'slack');
+    renderSection(slackWorkItemsEl, data.slack_work, 'slack-work');
+
+    if (Array.isArray(data.warnings) && data.warnings.length > 0) {
+        const ul = document.createElement('ul');
+        data.warnings.forEach(w => {
+            const li = document.createElement('li');
+            li.textContent = w;
+            ul.appendChild(li);
+        });
+        warningsBannerEl.innerHTML = '';
+        warningsBannerEl.appendChild(ul);
+        warningsBannerEl.style.display = 'block';
+    } else {
+        warningsBannerEl.style.display = 'none';
+    }
 
     if (data.generated_at) {
         lastUpdatedEl.textContent = `Last updated: ${formatTimestamp(data.generated_at)}`;
@@ -163,6 +232,8 @@ async function loadDashboard(date) {
     loadingEl.style.display = 'block';
     errorEl.style.display = 'none';
     dashboardEl.style.display = 'none';
+    warningsBannerEl.style.display = 'none';
+    standupDigestEl.style.display = 'none';
 
     try {
         const result = await fetchData(date);

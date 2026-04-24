@@ -85,6 +85,27 @@ main {
     color: #f85149;
 }
 
+.warnings-banner {
+    max-width: 900px;
+    margin: 0 auto 20px;
+    padding: 12px 16px;
+    background-color: rgba(255, 152, 0, 0.1);
+    border: 1px solid rgba(255, 152, 0, 0.3);
+    border-radius: 6px;
+    color: #ff9800;
+    font-size: 0.875rem;
+}
+
+.warnings-banner ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.warnings-banner li::before {
+    content: '⚠ ';
+}
+
 .dashboard {
     display: flex;
     flex-direction: column;
@@ -107,19 +128,79 @@ main {
 }
 
 .done-label {
-    color: #4caf50;
+    color: #81c784;
 }
 
 .in-progress-label {
-    color: #2196f3;
+    color: #64b5f6;
 }
 
 .up-next-label {
-    color: #ff9800;
+    color: #ffb74d;
 }
 
 .slack-label {
-    color: #e91e63;
+    color: #f06292;
+}
+
+.slack-work-label {
+    color: #ce93d8;
+}
+
+.digest-label {
+    color: #ffffff;
+}
+
+.standup-digest {
+    background: linear-gradient(180deg, #1a2030 0%, #161b22 100%);
+    border-color: #3d4452;
+}
+
+.digest-group {
+    margin-bottom: 16px;
+}
+
+.digest-group:last-child {
+    margin-bottom: 0;
+}
+
+.digest-subhead {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #8b949e;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.digest-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.digest-list li {
+    padding: 4px 0 4px 16px;
+    position: relative;
+    color: #c9d1d9;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.digest-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #6e7681;
+}
+
+.more-indicator {
+    font-size: 0.8125rem;
+    color: #6e7681;
+    font-style: italic;
+    margin-top: 6px;
+    display: block;
+    width: 100%;
 }
 
 .pill-container {
@@ -154,47 +235,58 @@ main {
 }
 
 .pill.done {
-    background-color: rgba(76, 175, 80, 0.15);
-    border-color: rgba(76, 175, 80, 0.3);
-    color: #4caf50;
+    background-color: rgba(129, 199, 132, 0.15);
+    border-color: rgba(129, 199, 132, 0.35);
+    color: #a5d6a7;
 }
 
 .pill.done:hover {
-    background-color: rgba(76, 175, 80, 0.25);
-    border-color: rgba(76, 175, 80, 0.5);
+    background-color: rgba(129, 199, 132, 0.25);
+    border-color: rgba(129, 199, 132, 0.55);
 }
 
 .pill.in-progress {
-    background-color: rgba(33, 150, 243, 0.15);
-    border-color: rgba(33, 150, 243, 0.3);
-    color: #2196f3;
+    background-color: rgba(100, 181, 246, 0.15);
+    border-color: rgba(100, 181, 246, 0.35);
+    color: #90caf9;
 }
 
 .pill.in-progress:hover {
-    background-color: rgba(33, 150, 243, 0.25);
-    border-color: rgba(33, 150, 243, 0.5);
+    background-color: rgba(100, 181, 246, 0.25);
+    border-color: rgba(100, 181, 246, 0.55);
 }
 
 .pill.up-next {
-    background-color: rgba(255, 152, 0, 0.15);
-    border-color: rgba(255, 152, 0, 0.3);
-    color: #ff9800;
+    background-color: rgba(255, 183, 77, 0.15);
+    border-color: rgba(255, 183, 77, 0.35);
+    color: #ffcc80;
 }
 
 .pill.up-next:hover {
-    background-color: rgba(255, 152, 0, 0.25);
-    border-color: rgba(255, 152, 0, 0.5);
+    background-color: rgba(255, 183, 77, 0.25);
+    border-color: rgba(255, 183, 77, 0.55);
 }
 
 .pill.slack {
-    background-color: rgba(233, 30, 99, 0.15);
-    border-color: rgba(233, 30, 99, 0.3);
-    color: #e91e63;
+    background-color: rgba(240, 98, 146, 0.15);
+    border-color: rgba(240, 98, 146, 0.35);
+    color: #f48fb1;
 }
 
 .pill.slack:hover {
-    background-color: rgba(233, 30, 99, 0.25);
-    border-color: rgba(233, 30, 99, 0.5);
+    background-color: rgba(240, 98, 146, 0.25);
+    border-color: rgba(240, 98, 146, 0.55);
+}
+
+.pill.slack-work {
+    background-color: rgba(206, 147, 216, 0.15);
+    border-color: rgba(206, 147, 216, 0.35);
+    color: #e1bee7;
+}
+
+.pill.slack-work:hover {
+    background-color: rgba(206, 147, 216, 0.25);
+    border-color: rgba(206, 147, 216, 0.55);
 }
 
 .pill .tooltip {
