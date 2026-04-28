@@ -1,0 +1,253 @@
+{
+  "date": "2026-04-28",
+  "generated_at": "2026-04-28T09:02:00-07:00",
+  "done": [
+    {
+      "source": "jira",
+      "key": "RETIRE-7499",
+      "summary": "Group-level liquidation_exists? check causes 0-amount refund units to fail validation in controlled group corrections",
+      "description": "## Investigation Summary ### Sentry Link https://sentry2.guideline.tools/organizations/sentry/issues/81319 (401K-PROD-BACKEND-W2N) ### Timeline Analysis (2026-04-20) * **First seen**: 2026-03-14",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-7499"
+    },
+    {
+      "source": "github",
+      "key": "PR #61715",
+      "summary": "[RETIRE-7936] Accumulate admin AAA detail rows that share the PLAN name_key",
+      "description": "[RETIRE-7936] Accumulate admin AAA detail rows that share the PLAN name_key - ### Details\n[[[\n**jira:** RETIRE-7936\n**what:** Fix admin Financial Statements aggregated rows (Ending Cash, BOY Cash, Endin",
+      "url": "https://github.com/guideline-app/app/pull/61715"
+    }
+  ],
+  "in_progress": [
+    {
+      "source": "jira",
+      "key": "RETIRE-7860",
+      "summary": "Populate Form 5498 Box 4 before plan year 2025 filings",
+      "description": "## Problem Form 5498 Box 4 (recharacterized contributions) is hardcoded to `0` at `contributions.rb:35-37`. Plan year 2025 recharacterizations exist in production (66 events / ~$126K per BQ) and t",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-7860"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-4764",
+      "summary": "Turn on AAA as plans first start in Admin",
+      "description": "## Problem New DC plans do not automatically get the AAA (Annual Asset Activities) system enabled. The two required feature flags — `form5500_audit_rollup` (ID 10) and `filings-enable-spanner-integ",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-4764"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-7903",
+      "summary": "Add Schedule C direct compensation breakdown for Ops Auditor Inquiry",
+      "description": "## Problem Ops has no self-serve way to see the line items that sum to Schedule C \"direct compensation to Guideline LLC\" on a Form 5500 filing. When an auditor questions a Schedule C amount (or the",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-7903"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-6389",
+      "summary": "Determine post submission process for conversion ops",
+      "description": "## Problem After sponsors submit prior provider reports (RETIRE-6198), conversion ops needs a defined process to get compensation, contributions, and distribution data into the correct places on p",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-6389"
+    },
+    {
+      "source": "github",
+      "key": "PR #61718",
+      "summary": "RETIRE-4764: Auto-enable AAA flags when DC plans first become active",
+      "description": "RETIRE-4764: Auto-enable AAA flags when DC plans first become active - ### Details\n[[[\n**jira:** [RETIRE-4764](https://gustohq.atlassian.net/browse/RETIRE-4764)\n**what:** Auto-enable AAA flags (`form",
+      "url": "https://github.com/guideline-app/app/pull/61718"
+    }
+  ],
+  "up_next": [
+    {
+      "source": "jira",
+      "key": "RETIRE-8042",
+      "summary": "Compliance Refunds w/ Insufficient Deferrals/Balance: LRGs",
+      "description": "## Problem In a controlled-group (LRG) ADP/ACP correction, Salesforce cases for \"insufficient balance or deferrals\" are being created for participants of plans that **individually passed** ADP/ACP",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-8042"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-7116",
+      "summary": "ACC plans with manual/self-service payroll stuck in pending for Form 5500 filings due to missing plan_administrator subscription",
+      "description": "## Summary 223 ACC tenant plans with pending plan year 2025 Form 5500 filings are stuck in `pending` state and cannot transition to `confirmed`. The root cause is that these plans have `plan_admini",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-7116"
+    },
+    {
+      "source": "jira",
+      "key": "RETIRE-4551",
+      "summary": "Investigate and optimize filing preflight validation performance (P95: ~8.9 hours)",
+      "description": "## Problem Filing preflight validations are taking ~8 hours (P95: 31.9M ms / ~8.9h, AVG: 22.8M ms / ~6.3h) to run across all plans daily. The Honeycomb dashboard \"Filing Preflight Validations\" sho",
+      "url": "https://gusto.atlassian.net/browse/RETIRE-4551"
+    },
+    {
+      "source": "github",
+      "key": "PR #61763",
+      "summary": "[RETIRE-7860] Populate Form 5498 Box 4 for recharacterizations",
+      "description": "[RETIRE-7860] Populate Form 5498 Box 4 for recharacterizations - ### Details\n[[[\n**jira:** [RETIRE-7860](https://gustohq.atlassian.net/browse/RETIRE-7860)\n**what:** Populates Form 5498 Box 4 (rechara",
+      "url": "https://github.com/guideline-app/app/pull/61763"
+    },
+    {
+      "source": "github",
+      "key": "PR #61761",
+      "summary": "[RETIRE-8042] Suppress LRG SF cases for plans that individually passed ADP/ACP",
+      "description": "[RETIRE-8042] Suppress LRG SF cases for plans that individually passed ADP/ACP - ### Details\n[[[\n**jira:** [RETIRE-8042](https://gustohq.atlassian.net/browse/RETIRE-8042)\n\n**what:** In `ControlledGr",
+      "url": "https://github.com/guideline-app/app/pull/61761"
+    },
+    {
+      "source": "github",
+      "key": "PR #61804",
+      "summary": "[RETIRE-7967] Add client-side JSON Schema validation to adoption plan attribute forms",
+      "description": "[RETIRE-7967] Add client-side JSON Schema validation to adoption plan attribute forms",
+      "url": "https://github.com/guideline-app/app/pull/61804"
+    },
+    {
+      "source": "github",
+      "key": "PR #61705",
+      "summary": "[RETIRE-7917] Add RegenerateQuarterlyStatementsTask DevTask",
+      "description": "[RETIRE-7917] Add RegenerateQuarterlyStatementsTask DevTask",
+      "url": "https://github.com/guideline-app/app/pull/61705"
+    },
+    {
+      "source": "github",
+      "key": "PR #61621",
+      "summary": "feat(client/packages/guideline-ui): add subpath exports for charts, workflow, and forms [RETIRE-7763]",
+      "description": "feat(client/packages/guideline-ui): add subpath exports for charts, workflow, and forms [RETIRE-7763] - [[[\n**jira:** [RETIRE-7763](https://gustohq.atlassian.net/browse/RETIRE-7763)\n**what:** Add `./",
+      "url": "https://github.com/guideline-app/app/pull/61621"
+    },
+    {
+      "source": "github",
+      "key": "PR #61545",
+      "summary": "[RETIRE-7062] pbe: add Hours of Service eligibility requirement modal",
+      "description": "[RETIRE-7062] pbe: add Hours of Service eligibility requirement modal",
+      "url": "https://github.com/guideline-app/app/pull/61545"
+    },
+    {
+      "source": "github",
+      "key": "PR #61522",
+      "summary": "[RETIRE-7648] Auto-generate TypeScript scope path types from permissions schema",
+      "description": "[RETIRE-7648] Auto-generate TypeScript scope path types from permissions schema",
+      "url": "https://github.com/guideline-app/app/pull/61522"
+    },
+    {
+      "source": "github",
+      "key": "PR #61353",
+      "summary": "[RETIRE-7474] Add dev_task scope type to V2 permissions",
+      "description": "[RETIRE-7474] Add dev_task scope type to V2 permissions",
+      "url": "https://github.com/guideline-app/app/pull/61353"
+    },
+    {
+      "source": "github",
+      "key": "PR #61035",
+      "summary": "[RETIRE-7123] Gate entity name rebrand behind feature flag",
+      "description": "[RETIRE-7123] Gate entity name rebrand behind feature flag - [[[\n**jira:** [RETIRE-7123](https://gustohq.atlassian.net/browse/RETIRE-7123)\n**what:** Gate Guideline → Gusto legal entity name rebrand b",
+      "url": "https://github.com/guideline-app/app/pull/61035"
+    },
+    {
+      "source": "github",
+      "key": "PR #60334",
+      "summary": "Add caching optimizations for batch portfolio replay simulations",
+      "description": "Add caching optimizations for batch portfolio replay simulations",
+      "url": "https://github.com/guideline-app/app/pull/60334"
+    }
+  ],
+  "slack_attention": [
+    {
+      "channel": "#retirement-compliance-filings-help",
+      "summary": "Mention in #retirement-compliance-filings-help",
+      "description": "Retirement Compliance – Filings Help Request - Submitted by Mandy Lantz (Apr 27). Q1 2026 BT Passport statements aren't uploading to admin for Vestwell-transition plans. Tags @sophie.samuels @Tommy Chiu. Plan 294899, ACC tenant, deadline 04/30/26.",
+      "age": "18h",
+      "url": "https://gusto.slack.com/archives/C09UNU84V6D/p1777325999520139"
+    },
+    {
+      "channel": "#retirement-compliance-lobby",
+      "summary": "Mention in #retirement-compliance-lobby",
+      "description": "Alexandra Munteanu: 'Tommy Chiu Submitted [RETIRE-8042] here! Happy to provide anything else that might be needed.'",
+      "age": "22h",
+      "url": "https://gusto.slack.com/archives/C09U30SCMB3/p1777309411797059"
+    },
+    {
+      "channel": "#retirement-compliance-filings-help",
+      "summary": "Mention in #retirement-compliance-filings-help",
+      "description": "Mandy Lantz: 'Is the filings team unblocked from being able to make these changes or does it require Eng to assist?' (re: audit access role changes for Vestwell-migrated plans).",
+      "age": "26h",
+      "url": "https://gusto.slack.com/archives/C09UNU84V6D/p1777295558972559"
+    },
+    {
+      "channel": "#retirement-compliance-lobby",
+      "summary": "@devs mention in #retirement-compliance-lobby - no reply",
+      "description": "Quarantined Tests Report for AT-ATK-28528. Team: filings. Total Quarantined Tests: 191. Includes recent (<30 days) Admin::FilingConsole::Form5500Test tests quarantined via Trunk.",
+      "age": "26h",
+      "url": "https://gusto.slack.com/archives/C09U30SCMB3/p1777298500700939"
+    },
+    {
+      "channel": "#retirement-compliance-lobby",
+      "summary": "@devs mention in #retirement-compliance-lobby - no reply",
+      "description": "Sidekiq Retry Summary Digest: FilingDocumentSubscriber (QueueBus::Worker): 142",
+      "age": "27h",
+      "url": "https://gusto.slack.com/archives/C09U30SCMB3/p1777291414018289"
+    },
+    {
+      "channel": "#retirement-compliance-lobby",
+      "summary": "@devs mention in #retirement-compliance-lobby - no reply",
+      "description": "Sentry Issues Digest (Top 1 issues this week): [401k-prod-backend] Filings::Forms::ESignatureAlternativeDocumentGenerateOp...: 34 events",
+      "age": "27h",
+      "url": "https://gusto.slack.com/archives/C09U30SCMB3/p1777291347015279"
+    },
+    {
+      "channel": "#retirement-compliance-lobby",
+      "summary": "@devs mention in #retirement-compliance-lobby - no reply",
+      "description": "Sentry Issues Digest (Top 5 issues this week): sidekiq-unique-jobs unlock_failed (4929 events), Compliance::NonDiscriminationCorrections::ControlledGroup (645), DollarTargetBuffer (505), unlock_failed retry=true (382), OutputNotSetError (160)",
+      "age": "27h",
+      "url": "https://gusto.slack.com/archives/C09U30SCMB3/p1777291341813609"
+    },
+    {
+      "channel": "#retirement-compliance-lobby",
+      "summary": "@devs mention in #retirement-compliance-lobby - no reply",
+      "description": "[Feature Cleanup] Stalled rollouts (>2 weeks since rollout % updated): compliance_limit_402g_v2, compliance_limit_415_v2, new-comp-nightly-solver-tax-filing-guard-off, evaluate-edfs, auto-notify-pcps-of-edfs, plus several late-enrollment-automation flags.",
+      "age": "28h",
+      "url": "https://gusto.slack.com/archives/C09U30SCMB3/p1777291337339899"
+    },
+    {
+      "channel": "#retirement-compliance-lobby",
+      "summary": "@devs mention in #retirement-compliance-lobby - no reply",
+      "description": "[Feature Cleanup] Stalled rollouts: form5500_audit_rollup, participant-balance-summarize-op-use-drift-calculator, filings-enable-spanner-integration",
+      "age": "28h",
+      "url": "https://gusto.slack.com/archives/C09U30SCMB3/p1777291265466839"
+    },
+    {
+      "channel": "#retirement-compliance-lobby",
+      "summary": "@devs mention in #retirement-compliance-lobby - no reply",
+      "description": "[Feature Cleanup] Features enabled_for_all >2 weeks needing cleanup: evaluate-non-integrated-late-enrollments, dc-plan--late-enrollment-automation-gusto, multiple late-enrollment-automation variants (intuit, on-pay, paylocity, square, trinet, etc.).",
+      "age": "28h",
+      "url": "https://gusto.slack.com/archives/C09U30SCMB3/p1777291247306129"
+    }
+  ],
+  "slack_work": [
+    {
+      "source": "slack",
+      "context": "#retirement-compliance-lobby thread",
+      "summary": "Resolved stuck 5500 filing state transition (Prepared -> Submitted) for ~100 filings",
+      "description": "Tommy triaged a Gusto Retirement alert about 100 filings stuck in Prepared. Identified the cause as one IrsSubmission batch failing, held one filing missing a signature due to a VW blackout period, and resubmitted the rest with the updated IrsSubmission. Also flagged that this alert should be routed to the alerts channel.",
+      "url": "https://gusto.slack.com/archives/C09U30SCMB3/p1777329940879939",
+      "age": "16h"
+    }
+  ],
+  "standup_digest": {
+    "yesterday": [
+      "Fixed group-level liquidation_exists? check that was failing 0-amount refund units in controlled-group corrections (RETIRE-7499).",
+      "Shipped admin AAA detail-row accumulation by PLAN name_key — fixes Financial Statements aggregated rows (RETIRE-7936, PR #61715).",
+      "Triaged Gusto Retirement alert and unstuck ~100 Form 5500 filings in Prepared, held one VW blackout signature case (Slack #retirement-compliance-lobby thread)."
+    ],
+    "today": [
+      "Form 5498 Box 4 recharacterizations — PR #61763 in review for RETIRE-7860 ahead of PY2025 filings.",
+      "Auto-enable AAA flags when DC plans first activate — PR #61718 in review for RETIRE-4764.",
+      "Schedule C direct-compensation breakdown for Ops Auditor Inquiry (RETIRE-7903) and conversion-ops post-submission process (RETIRE-6389) in flight."
+    ],
+    "blockers": [
+      "Review queue: 10 PRs requesting my review (incl. #61804, #61705, #61621, #61545); two of mine (#61763, #61761) also waiting.",
+      "3 user mentions awaiting reply: Mandy Lantz on Q1 2026 BT Passport upload + audit-access role changes for Vestwell-migrated plans (filings-help, plan 294899, deadline 04/30); Alex Munteanu confirming RETIRE-8042 ask.",
+      "7 unanswered @devs digests in #retirement-compliance-lobby: 191 quarantined tests, Sentry top issues, stalled feature flag rollouts (incl. form5500_audit_rollup, filings-enable-spanner-integration)."
+    ]
+  },
+  "warnings": [
+    "github: skill constants point to Gusto/app and team Gusto/retirement-compliance, which 422 for this user; substituted guideline-app/app and team guideline-app/retirement-compliance, which succeeded",
+    "slack-work-mining: DM enumeration unavailable (no conversations.list for IMs in this MCP); compliance channels #retirement-compliance-filings-help, #retirement-compliance, #retirement-apa-support did not resolve via channel search and returned no from: matches in window."
+  ]
+}
